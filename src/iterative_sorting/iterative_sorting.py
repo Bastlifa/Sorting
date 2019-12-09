@@ -11,9 +11,7 @@ def selection_sort( arr ):
                 smallest_index = j
         
         # TO-DO: swap
-        temp = arr[smallest_index]
-        arr[smallest_index] = arr[cur_index]
-        arr[cur_index] = temp
+        arr[cur_index], arr[smallest_index] = arr[smallest_index], arr[cur_index]
 
     return arr
 
@@ -24,14 +22,40 @@ def bubble_sort( arr ):
         swap_happened = False
         for i in range(len(arr) - 1):
             if arr[i+1] < arr[i]:
-                temp = arr[i+1]
-                arr[i+1] = arr[i]
-                arr[i] = temp
+                arr[i+1], arr[i] = arr[i], arr[i+1]
                 swap_happened = True
     return arr
 
 
 # STRETCH: implement the Count Sort function below
-def count_sort( arr, maximum=-1 ):
+# def count_sort( arr, maximum=-1 ):
+#     data_range = 0
+#     for i in arr:
+#         if i > data_range:
+#             data_range = i
 
-    return arr
+#     data_arr = []
+#     for i in range(data_range + 1):
+#         data_arr.append(0)
+
+#     for i in arr:
+#         if i < 0:
+#             return "Error, negative numbers not allowed in Count Sort"
+#         else:
+#             data_arr[i] += 1
+
+#     print(data_arr)
+#     for i in range(1, len(data_arr)):
+#         data_arr[i] += data_arr[i-1]
+    
+#     for i in range(len(data_arr)):
+#         while data_arr[i] > 0:
+#             print(data_arr[i])
+#             arr[data_arr[i]] = i
+#             data_arr[i] -= 1
+
+#     # return data_arr
+#     return arr
+
+# a = [1,5,6,7,3,1,0,4,7,0]
+# print(count_sort(a))
