@@ -4,8 +4,17 @@ def merge( arrA, arrB ):
     merged_arr = [0] * elements
     # TO-DO
     
+    for i in range(len(merged_arr)):
+        if len(arrA) == 0 or arrB[0] < arrA[0]:
+            merged_arr[i] = arrB[0]
+            arrB.pop(0)
+        else:
+            merged_arr[i] = arrA[0]
+            arrA.pop(0)
+        print(merged_arr)
     return merged_arr
 
+print(merge([1,3,6,7], [2, 2, 9]))
 
 # TO-DO: implement the Merge Sort function below USING RECURSION
 def merge_sort( arr ):
