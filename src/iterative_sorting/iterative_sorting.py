@@ -28,34 +28,35 @@ def bubble_sort( arr ):
 
 
 # STRETCH: implement the Count Sort function below
-# def count_sort( arr, maximum=-1 ):
-#     data_range = 0
-#     for i in arr:
-#         if i > data_range:
-#             data_range = i
+def count_sort( arr, maximum=-1 ):
+    # find largest number in array
+    data_range = maximum
+    if data_range == -1:
+        for i in arr:
+            if i > data_range:
+                data_range = i
+    # Make list of 0's, length is max data val
+    data_arr = [0 for i in range(data_range + 1)]
 
-#     data_arr = []
-#     for i in range(data_range + 1):
-#         data_arr.append(0)
+    # loop over arr, if <0, error
+    # add 1 to data_arr at arr[i] 
+    for i in range(len(arr)):
+        if arr[i] < 0:
+            return "Error, negative numbers not allowed in Count Sort"
+        else:
+            data_arr[arr[i]] += 1
 
-#     for i in arr:
-#         if i < 0:
-#             return "Error, negative numbers not allowed in Count Sort"
-#         else:
-#             data_arr[i] += 1
-
-#     print(data_arr)
-#     for i in range(1, len(data_arr)):
-#         data_arr[i] += data_arr[i-1]
+    # Starting at index 1, add previous number to current index val
+    for i in range(1, data_range + 1):
+        data_arr[i] += data_arr[i-1]
     
-#     for i in range(len(data_arr)):
-#         while data_arr[i] > 0:
-#             print(data_arr[i])
-#             arr[data_arr[i]] = i
-#             data_arr[i] -= 1
+    output = [*arr]
 
-#     # return data_arr
-#     return arr
+    for i in range(len(arr)):
+        output[data_arr[arr[i]] -1]  = arr[i]
+        data_arr[arr[i]] -= 1
 
-# a = [1,5,6,7,3,1,0,4,7,0]
-# print(count_sort(a))
+    return output
+
+a = [1,5,6,7,3,1,0,4,7,0]
+print(count_sort(a))
